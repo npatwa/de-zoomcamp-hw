@@ -8,3 +8,8 @@ python
 import pip
 pip.__version__
 ```
+
+## Q2
+Answer is postgres:5432
+
+## Q3
