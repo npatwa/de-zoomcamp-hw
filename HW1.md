@@ -1,6 +1,6 @@
-#Home Work 1
+# Home Work 1
 
-##Q1 
+## Q1 
 
 ```sh
 docker run -it --entrypoint=bash python:3.12.8
