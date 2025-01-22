@@ -34,3 +34,25 @@ select lpep_pickup_datetime from public.green_taxi_data where trip_distance = (s
 Answer is 2019-10-31
 
 ## Q5
+```sh
+select z."Zone", sum(t.total_amount) as tot
+from green_taxi_data t join zones z on t."PULocationID"=z."LocationID"  
+where date(t.lpep_pickup_datetime)= '2019-10-18'
+group by z."Zone"
+having sum(t.total_amount) > 13000
+```
+
+Answer is East Harlem North, East Harlem South, Morningside Heights
+
+## Q6
+```sh
+select zdrop."Zone", sum(t.tip_amount)
+from green_taxi_data t, zones zpick, zones zdrop
+where t."DOLocationID" = zdrop."LocationID" and
+	t."PULocationID" = zpick."LocationID" and
+	zpick."Zone" = 'East Harlem North'
+group by zdrop."Zone"
+order by sum(t.tip_amount) DESC
+```
+
+Answer is East Harlem South
